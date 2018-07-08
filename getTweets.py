@@ -20,6 +20,12 @@ output_csv = open('csta.csv', 'a')
 
 writer = csv.writer(output_csv)
 
+print('auth done')
+
+counter = 0
 for tweet in tweepy.Cursor(api.search, q="#csta2018").items():
     print(tweet.text)
-    writer.writerow([tweet.created_at, tweet.text.encode('utf-8')])
+    writer.writerow([tweet.created_at, tweet.text])
+    counter += 1
+
+print(counter)
